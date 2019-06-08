@@ -1,5 +1,4 @@
-# sail
-Forecasting disaster at sea
+# Sail
 Damage from sea disaster is no less than a wildfire. No ship owner has enough money to compensate, so they all have to buy P&I insurance. A crude oil tanker can have a deadweight of up to 550 thousand metric tons. If it sank then it was a terrible disaster.
 Sail solution is a machine learning application that uses the IBM Cloud platform. This is a deep learning program with superparameter optimization experiment. The neural network is trained and deployed through IBM Watson Machine Learning CLI commands. The client program runs on a notebook to predict the risk, sending the payload data to the trained model via a Python function. This function is a Python closure that performs two tasks:
 - Convert raw input data from users as human-readable strings to model deployment payload format.
