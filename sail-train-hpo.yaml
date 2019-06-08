@@ -1,0 +1,21 @@
+name: sail-tf-hyperparameter-optimization
+description: Sail model implemented in TF using Hyperparameter Optimization
+framework:
+  name: tensorflow
+  version: '1.5'
+  runtimes: 
+    name: python
+    version: '3.5'
+execution:
+  command: python3 sail_network.py --dataFile ${DATA_DIR}/sail.csv.gz
+  compute_configuration:
+    name: k80
+training_data_reference:
+- name: sail_training_data
+  connection:
+    endpoint_url: <INSERT endpoint_url found in your cloud storage endpoint>
+    access_key_id: <INSERT access_key_id found in your cloud storage credentials>
+    secret_access_key: <INSERT secret_access_key found in your cloud storage credentials>
+  source:
+    bucket: <INSERT name of training_data bucket found in your cloud storage>
+  type: s3
