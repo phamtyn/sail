@@ -33,7 +33,7 @@ AWS CLI is used to create sail-data bucket to store sample data and sail-result 
 
 After data has been prepared in Cloud Object Storage, WML CLI is used to define training run with two files sail-model-hpo.zip and sail-train-hpo.yaml. The returned result contains TRAINING-DEFINITION-ID used to update sail-experiments-hpo.yaml manifest file. The experiment is then stored with this file. EXPERIMENT-ID returned is used to run experiment. The result returned contains EXPERIMENT-RUN-ID. In this process we can run the command 'bx ml list training-runs EXPERIMENT-ID EXPERIMENT-RUN-ID' to see the training status of the training runs. When the training is completed, AWS CLI is used to download the log file training-log.txt to see and select the model of the best-performing training run. We store the model in the WML repository and deploy this model. The construction and deployment of the model is shown in the following diagram:
 
-![Experoment](sail-experiment.png)
+![Experiment](sail-experiment.png)
 
 2)  deployable function
 
