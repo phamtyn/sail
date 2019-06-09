@@ -67,3 +67,100 @@ The code for weather data preprocessing is placed in the same file with the note
 Overview diagram of the Sail solution is as follows:
 
 ![Overview](sail-overview.png)
+
+## Valid input values
+
+When predicting, the input values ​​must be entered. Below is lists of valid input values ​​corresponding to each column in the sample data table
+
+**FLAG**
+```python
+"US"
+"Japan"
+"Panama"
+"Vietnam"
+```
+**TYPE OF SHIP**
+```python
+"General Cargo"
+"Bulk Carriers"
+"Container"
+"Ro-Ro"
+"Oil Tanker"
+"Liquefied Gas"
+"Chemical Carriers"
+```
+**DWT (DEADWEIGHT)**
+```python
+Should be a number in the range from 7000 to 550000
+```
+**BUILD**
+```python
+Should be a number in the range from 2005 to 2019
+```
+**CITIZEN**
+```python
+"American"
+"Japanese"
+"Korean"
+"Chinese"
+"Philippines"
+"Vietnamese"
+"Multi-national"
+```
+**CARGO**
+```python
+"Rice in bags"
+"Soybean milk"
+"Tapioca chip"
+"Grain in bulk"
+"Coal"
+"Cement"
+"Clay"
+"Ore in bulk"
+"Ore in jumbo bag"
+"Timber"
+"Logs"
+"Cars"
+"Equipment"
+"Steel products"
+"Heavy-lift"
+"Containers"
+"Product oil"
+"Crude oil"
+"Chemical"
+"Gas"
+```
+**AREA**
+```python
+"Pacific"
+"Indian Ocean"
+"Atlantic"
+"Indonesia Sea"
+"Yellow Sea"
+"Mediterranean"
+```
+**SEASON**
+```python
+"Summer"
+"Winter"
+```
+**WEATHER**
+
+This factor is entered automatically
+
+**PERIOD**
+```python
+Should be a number in the range from 5 to 40
+```
+**B.O.L**
+```python
+"Good"
+"Normal"
+"Bad"
+```
+**PSC**
+```python
+"Good"
+"Normal"
+"Bad"
+```
