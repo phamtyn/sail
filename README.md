@@ -48,7 +48,7 @@ The deployable function is a Python closure placed in the deploy_function.py fil
 
 The function deployment can be performed on a local machine. The model_endpoint_url variable in the source code will be assigned the value Scoring endpoint of the model deployment above.
 
-## 3) notebook và Weather Channel data
+## 3) notebook and Weather Channel data
 
 The notebook sends predictive data to the model via the function deployment, and get results. The method used is REST API. The source code is in file notebook.py. The weather is taken for 7 days. When scoring, users only need to enter 11 other factors, while the weather factor is entered automatically. The point of interest is that weather data from the Weather Channel needs to be converted to weather classes. This can be thought of as a classification subprogram, using Python code for a recursive function with a schema in the form of a dictionary:
 
