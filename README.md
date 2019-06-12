@@ -164,3 +164,13 @@ Should be a number in the range from 5 to 40
 "Normal"
 "Bad"
 ```
+
+## Results classes
+The result will be one of five classes:
+```python
+"Safe"
+"Low Risk"
+"Medium Risk"
+"High Risk"
+"Dangerous"
+```
