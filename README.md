@@ -117,6 +117,11 @@ except CalledProcessError as error:
     print (error.stdout.decode()[:-1])
     return ''
 ```
+The use of Fuzzy has the following advantages:
+
+- Weather data is only a forecast, not sure, so it is suitable for fuzzy sets
+- It is possible to receive input data directly from a data range without dividing data by hierarchy. That will bring enough information. For example, if the wind forecast is "... wind from 30 to 50 ...", it will match the fuzzy set (..., 0.5/30, 1/40, 0.5/50, ...)
+- The rules are simple and explicit
 
 The code for weather data preprocessing is placed in the same file with the notebook. However, to emphasize the weather feature, it is separated into a separate block.
 
