@@ -52,15 +52,6 @@ term SCORE(4)
     fuzzy discrete dangerous(0/0, 0/1, 0.5/2, 1/3);
 };
 
-int round_input(Number val, int interval) {
-
-    Number quo = val / interval;
-
-    int out = round(quo) * interval;
-
-    return out;
-}
-
 String int2string(int code) {
     switch (code) {
         case 0:
@@ -74,8 +65,8 @@ String int2string(int code) {
     }
 }
 
-struct WEATHER
-{
+struct WEATHER {
+    
     MAX_TEMP max_temp;
     MIN_TEMP min_temp;
     STORM storm;
@@ -84,201 +75,18 @@ struct WEATHER
     FOG fog;
     SCORE score;
 
-    bool Read(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg)
-    {
-        int i;
+    void Read(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg) {
 
-        switch ( i = round_input(max_temp_arg, 5) )
-        {
-        case -10:
-            put max_temp := (1/i, 0.5/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case -5:
-            put max_temp := (0.5/-10, 1/i, 0.5/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 0:
-            put max_temp := (0/-10, 0.5/-5, 1/i, 0.5/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 5:
-            put max_temp := (0/-10, 0/-5, 0.5/0, 1/i, 0.5/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 10:
-            put max_temp := (0/-10, 0/-5, 0/0, 0.5/5, 1/i, 0.5/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 15:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0.5/10, 1/i, 0.5/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 20:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0.5/15, 1/i, 0.5/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 25:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0.5/20, 1/i, 0.5/30, 0/35, 0/40, 0/45);
-            break;
-        case 30:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0.5/25, 1/i, 0.5/35, 0/40, 0/45);
-            break;
-        case 35:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0.5/30, 1/i, 0.5/40, 0/45);
-            break;
-        case 40:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0.5/35, 1/i, 0.5/45);
-            break;
-        case 45:
-            put max_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0.5/40, 1/i);
-            break;
-        default:
-            return false;
-        }
-        
-        switch ( i = round_input(min_temp_arg, 5) )
-        {
-        case -10:
-            put min_temp := (1/i, 0.5/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case -5:
-            put min_temp := (0.5/-10, 1/i, 0.5/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 0:
-            put min_temp := (0/-10, 0.5/-5, 1/i, 0.5/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 5:
-            put min_temp := (0/-10, 0/-5, 0.5/0, 1/i, 0.5/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 10:
-            put min_temp := (0/-10, 0/-5, 0/0, 0.5/5, 1/i, 0.5/15, 0/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 15:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0.5/10, 1/i, 0.5/20, 0/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 20:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0.5/15, 1/i, 0.5/25, 0/30, 0/35, 0/40, 0/45);
-            break;
-        case 25:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0.5/20, 1/i, 0.5/30, 0/35, 0/40, 0/45);
-            break;
-        case 30:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0.5/25, 1/i, 0.5/35, 0/40, 0/45);
-            break;
-        case 35:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0.5/30, 1/i, 0.5/40, 0/45);
-            break;
-        case 40:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0.5/35, 1/i, 0.5/45);
-            break;
-        case 45:
-            put min_temp := (0/-10, 0/-5, 0/0, 0/5, 0/10, 0/15, 0/20, 0/25, 0/30, 0/35, 0.5/40, 1/i);
-            break;
-        default:
-            return false;
-        }
-
-        switch ( i = storm_arg )
-        {
-        case 0:
-            put storm := (1/i, 0.5/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 1:
-            put storm := (0.5/0, 1/i, 0.5/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 2:
-            put storm := (0/0, 0.5/1, 1/i, 0.5/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 3:
-            put storm := (0/0, 0/1, 0.5/2, 1/i, 0.5/4, 0/5, 0/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 4:
-            put storm := (0/0, 0/1, 0/2, 0.5/3, 1/i, 0.5/5, 0/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 5:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0.5/4, 1/i, 0.5/6, 0/7, 0/8, 0/9, 0/10);
-            break;
-        case 6:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0/4, 0.5/5, 1/i, 0.5/7, 0/8, 0/9, 0/10);
-            break;
-        case 7:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0.5/6, 1/i, 0.5/8, 0/9, 0/10);
-            break;
-        case 8:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0.5/7, 1/i, 0.5/9, 0/10);
-            break;
-        case 9:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0.5/8, 1/i, 0.5/10);
-            break;
-        case 10:
-            put storm := (0/0, 0/1, 0/2, 0/3, 0/4, 0/5, 0/6, 0/7, 0/8, 0.5/9, 1/i);
-            break;
-        default:
-            return false;
-        }
-
-        switch ( i = round_input(wind_arg, 10) )
-        {
-        case 0:
-            put wind := (1/i, 0.5/10, 0/20, 0/30, 0/40, 0/50, 0/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 10:
-            put wind := (0.5/0, 1/i, 0.5/20, 0/30, 0/40, 0/50, 0/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 20:
-            put wind := (0/0, 0.5/10, 1/i, 0.5/30, 0/40, 0/50, 0/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 30:
-            put wind := (0/0, 0/10, 0.5/20, 1/i, 0.5/40, 0/50, 0/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 40:
-            put wind := (0/0, 0/10, 0/20, 0.5/30, 1/i, 0.5/50, 0/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 50:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0.5/40, 1/i, 0.5/60, 0/70, 0/80, 0/90, 0/100);
-            break;
-        case 60:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0/40, 0.5/50, 1/i, 0.5/70, 0/80, 0/90, 0/100);
-            break;
-        case 70:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0/40, 0/50, 0.5/60, 1/i, 0.5/80, 0/90, 0/100);
-            break;
-        case 80:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0/40, 0/50, 0/60, 0.5/70, 1/i, 0.5/90, 0/100);
-            break;
-        case 90:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0/40, 0/50, 0/60, 0/70, 0.5/80, 1/i, 0.5/100);
-            break;
-        case 100:
-            put wind := (0/0, 0/10, 0/20, 0/30, 0/40, 0/50, 0/60, 0/70, 0/80, 0.5/90, 1/i);
-            break;
-        default:
-            return false;
-        }
-        
-        switch ( i = thunder_arg )
-        {
-        case 0:
-            put thunder := (1/i, 0.5/0.5, 0/1);
-            break;
-        case 1:
-            put thunder := (0/0, 0.5/0.5, 1/i);
-            break;
-        default:
-            return false;
-        }
-        
-        switch ( i = fog_arg )
-        {
-        case 0:
-            put fog := (1/i, 0.5/0.5, 0/1);
-            break;
-        case 1:
-            put fog := (0/0, 0.5/0.5, 1/i);
-            break;
-        default:
-            return false;
-        }
-
-        return true;
+        PutReading (max_temp, max_temp_arg);
+        PutReading (min_temp, min_temp_arg);
+        PutReading (storm, storm_arg);
+        PutReading (wind, wind_arg);
+        PutReading (thunder, thunder_arg);
+        PutReading (fog, fog_arg);
     }
 
-    void SetRules()
-    {
+    void SetRules() {
+        
         ZeroFuzz(score);
 
         rule max_temp.heat OR min_temp.freeze => score.dangerous;
@@ -292,27 +100,15 @@ struct WEATHER
             (wind.breeze OR wind.calm) AND thunder.no AND fog.no => score.good;
     }
 
-    void Process(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg)
-    {
-        if ( Read(max_temp_arg, min_temp_arg, storm_arg, wind_arg, thunder_arg, fog_arg) )
-        {
-            SetRules();
-            Display();
-        }
-        else
-            print "Invalid input!\n";
-    }
-    
-    int GetScoreCode(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg)
-    {
-        if ( Read(max_temp_arg, min_temp_arg, storm_arg, wind_arg, thunder_arg, fog_arg) )
-            return defuzz_score();
-        else
-            return -1;
+    void Process(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg) {
+        
+        Read(max_temp_arg, min_temp_arg, storm_arg, wind_arg, thunder_arg, fog_arg);
+        SetRules();
+        Display();
     }
     
     int defuzz_score() {
-        int num_score = 4;
+        int num_score = score.size;
         FuzzyPair array_all[num_score];
         FuzzyToArray(score, array_all);
         int index_max_first = 0;
@@ -337,6 +133,7 @@ struct WEATHER
         int score = defuzz_score();
         print int2string(score);
     }
+    
 };
 
 WEATHER weather;
@@ -349,5 +146,3 @@ Number args[count];
 for (int i = 0; i < count; i++)
     args[i] = system_reading_array[i];
 weather.Process(args[0], args[1], args[2], args[3], args[4], args[5]);
-
-
