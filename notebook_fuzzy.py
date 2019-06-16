@@ -115,19 +115,6 @@ def analyze_weather(forecast):
     if storm is None:
         storm = 0
     
-    if max_temp > 45:
-        max_temp = 45
-    elif max_temp < -10:
-        max_temp = -10
-    
-    if min_temp > 45:
-        min_temp = 45
-    elif min_temp < -10:
-        min_temp = -10
-    
-    if wind > 100:
-        wind = 100
-    
     arg = " ".join([str(max_temp), str(min_temp), str(storm),
                     str(wind), str(thunder), str(fog)])
 
