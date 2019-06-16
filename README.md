@@ -82,7 +82,7 @@ rule LITTLE max_temp.mild AND LITTLE min_temp.mild AND REALLY storm.none AND
 The defuzzification is implemented by defuzz_score() function:
 ```c
 int defuzz_score() {
-    int num_score = 4;
+    int num_score = score.size;
     FuzzyPair array_all[num_score];
     FuzzyToArray(score, array_all);
     int index_max_first = 0;
