@@ -130,8 +130,9 @@ def analyze_weather(forecast):
 if not os.path.isfile( "weather.gz" ):
     download_weather()
 if not os.path.isfile( "fuzzy" ):
-    get_ipython().system(u' wget https://github.com/phamtyn/sail/raw/master/fuzzy')
-    get_ipython().system(u' chmod +x fuzzy')
+    ! wget https://github.com/phamtyn/sail/raw/master/fuzzy.gz
+    ! gunzip fuzzy.gz
+    ! chmod +x fuzzy
 if not os.path.isfile( "wea_fuzzy.c" ):
     get_ipython().system(u' wget https://raw.githubusercontent.com/phamtyn/sail/master/wea_fuzzy.c')
     
