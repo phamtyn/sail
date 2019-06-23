@@ -69,39 +69,40 @@ def lookup(schema, input_values):
 
 The fuzzy rules are applied as follows:
 ```c
-rule max_temp.heat OR min_temp.freeze => score.dangerous;
-rule storm.strong OR wind.gale => score.dangerous;
-rule wind.strong OR storm.light => score.bad;
-rule wind.moderate AND thunder.yes => score.bad;
-rule VERY fog.yes => score.bad;
-rule (max_temp.hot OR min_temp.cold) AND storm.none AND wind.moderate AND
+rule max_temp.heat OR LITTLE min_temp.freeze => score.dangerous;
+rule LITTLE LITTLE storm.violent OR BIT storm.strong OR wind.gale => score.dangerous;
+rule (REALLY wind.strong OR REALLY storm.medium) AND
+    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+    
+rule thunder.yes AND (wind.moderate OR storm.light) AND 
+    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+    
+rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.none AND
+    (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
+    thunder.yes AND fog.no => score.normal;    
+    
+rule REALLY fog.yes AND EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) AND
+    VERY VERY VERY NOT (LITTLE LITTLE storm.violent OR BIT storm.strong OR
+    LITTLE wind.gale) => score.bad;
+    
+rule (max_temp.hot OR min_temp.cold) AND storm.none AND
+    (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
     thunder.no AND fog.no => score.normal;
-rule LITTLE max_temp.mild AND LITTLE min_temp.mild AND REALLY storm.none AND
-    (wind.breeze OR wind.calm) AND thunder.no AND fog.no => score.good;
+    
+rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.light AND
+    (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
+    thunder.no AND fog.no => score.normal;
+
+rule max_temp.mild AND min_temp.mild AND storm.none AND
+    wind.moderate AND thunder.no AND fog.no => score.normal;
+
+rule LITTLE LITTLE max_temp.mild AND LITTLE LITTLE min_temp.mild AND
+    storm.none AND (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
+    thunder.no AND fog.no => score.good;
 ```
-The defuzzification is implemented by defuzz_score() function:
+The weather class is outputted using built-in function Classify():
 ```c
-int defuzz_score() {
-    int num_score = score.size;
-    FuzzyPair array_all[num_score];
-    FuzzyToArray(score, array_all);
-    int index_max_first = 0;
-    Number max_grade = 0;
-    for(int i = 0; i < num_score; i++)
-        if (array_all[i].m_grade > max_grade) {
-            max_grade = array_all[i].m_grade;
-            index_max_first = i;
-        }
-    Number array_max[num_score];
-    int count_max = 0;
-    for(int i = index_max_first; i < num_score; i++)
-        if (array_all[i].m_grade == max_grade) {
-            array_max[count_max] = array_all[i].m_value;
-            count_max++;
-        }
-    int value_max_average = floor( (array_max[0] + array_max[count_max - 1]) / 2 );
-    return value_max_average;
-}
+print int2string(Classify(score));
 ```
 
 In notebook_fuzzy.py, the input data is given to the fuzzy program as its command line argument, using the -r option:
