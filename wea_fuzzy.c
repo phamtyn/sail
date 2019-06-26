@@ -46,28 +46,7 @@ term FOG(0, 1, 4)
     fuzzy no = 0;
 };
 
-term SCORE(0, 3, 4)
-{
-    fuzzy good = 0;
-    fuzzy normal = 1;
-    fuzzy bad = 2;
-    fuzzy dangerous = 3;
-};
-
-String int2string(int code) {
-    switch (code) {
-        case 0:
-            return "Good";
-        case 1:
-            return "Normal";
-        case 2:
-            return "Bad";
-        case 3:
-            return "Danger";
-    }
-}
-
-struct WEATHER {
+term WEATHER(0, 3, 4) {
     
     MAX_TEMP max_temp;
     MIN_TEMP min_temp;
@@ -75,7 +54,11 @@ struct WEATHER {
     WIND wind;
     THUNDER thunder;
     FOG fog;
-    SCORE score;
+    
+    fuzzy good = 0;
+    fuzzy normal = 1;
+    fuzzy bad = 2;
+    fuzzy dangerous = 3;
 
     void Read(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg) {
 
@@ -89,38 +72,38 @@ struct WEATHER {
 
     void SetRules() {
         
-        ZeroFuzz(score);
+        ZeroFuzz(this);
         
-        rule max_temp.heat OR LITTLE min_temp.freeze => score.dangerous;
-        rule LITTLE LITTLE storm.violent OR BIT storm.strong OR wind.gale => score.dangerous;
+        rule max_temp.heat OR LITTLE min_temp.freeze => dangerous;
+        rule LITTLE LITTLE storm.violent OR BIT storm.strong OR wind.gale => dangerous;
         rule (REALLY wind.strong OR REALLY storm.medium) AND
-            EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+            EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => bad;
             
         rule thunder.yes AND (wind.moderate OR storm.light) AND 
-            EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+            EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => bad;
             
         rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.none AND
             (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-            thunder.yes AND fog.no => score.normal;    
+            thunder.yes AND fog.no => normal;    
             
         rule REALLY fog.yes AND EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) AND
             VERY VERY VERY NOT (LITTLE LITTLE storm.violent OR BIT storm.strong OR
-            LITTLE wind.gale) => score.bad;
+            LITTLE wind.gale) => bad;
             
         rule (max_temp.hot OR min_temp.cold) AND storm.none AND
             (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-            thunder.no AND fog.no => score.normal;
+            thunder.no AND fog.no => normal;
             
         rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.light AND
             (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-            thunder.no AND fog.no => score.normal;
+            thunder.no AND fog.no => normal;
         
         rule max_temp.mild AND min_temp.mild AND storm.none AND
-            wind.moderate AND thunder.no AND fog.no => score.normal;
+            wind.moderate AND thunder.no AND fog.no => normal;
         
         rule LITTLE LITTLE max_temp.mild AND LITTLE LITTLE min_temp.mild AND
             storm.none AND (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-            thunder.no AND fog.no => score.good;
+            thunder.no AND fog.no => good;
     }
 
     void Process(Number max_temp_arg, Number min_temp_arg, int storm_arg, Number wind_arg, int thunder_arg, int fog_arg) {
@@ -130,10 +113,22 @@ struct WEATHER {
         Display();
     }
     
+    String int2string(int code) {
+        switch (code) {
+            case 0:
+                return "Good";
+            case 1:
+                return "Normal";
+            case 2:
+                return "Bad";
+            case 3:
+                return "Danger";
+        }
+    }
 
     void Display() {
     
-        print int2string(Classify(score));
+        print int2string(Classify(this));
     }
     
 };
