@@ -69,40 +69,40 @@ def lookup(schema, input_values):
 
 The fuzzy rules are applied as follows:
 ```c
-rule max_temp.heat OR LITTLE min_temp.freeze => score.dangerous;
-rule LITTLE LITTLE storm.violent OR BIT storm.strong OR wind.gale => score.dangerous;
+rule max_temp.heat OR LITTLE min_temp.freeze => dangerous;
+rule LITTLE LITTLE storm.violent OR BIT storm.strong OR wind.gale => dangerous;
 rule (REALLY wind.strong OR REALLY storm.medium) AND
-    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => bad;
     
 rule thunder.yes AND (wind.moderate OR storm.light) AND 
-    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => score.bad;
+    EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) => bad;
     
 rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.none AND
     (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-    thunder.yes AND fog.no => score.normal;    
+    thunder.yes AND fog.no => normal;    
     
 rule REALLY fog.yes AND EXTREMELY NOT (max_temp.heat OR LITTLE min_temp.freeze) AND
     VERY VERY VERY NOT (LITTLE LITTLE storm.violent OR BIT storm.strong OR
-    LITTLE wind.gale) => score.bad;
+    LITTLE wind.gale) => bad;
     
 rule (max_temp.hot OR min_temp.cold) AND storm.none AND
     (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-    thunder.no AND fog.no => score.normal;
+    thunder.no AND fog.no => normal;
     
 rule SEEMED max_temp.mild AND SEEMED min_temp.mild AND storm.light AND
     (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-    thunder.no AND fog.no => score.normal;
+    thunder.no AND fog.no => normal;
 
 rule max_temp.mild AND min_temp.mild AND storm.none AND
-    wind.moderate AND thunder.no AND fog.no => score.normal;
+    wind.moderate AND thunder.no AND fog.no => normal;
 
 rule LITTLE LITTLE max_temp.mild AND LITTLE LITTLE min_temp.mild AND
     storm.none AND (LITTLE LITTLE wind.calm OR BIT wind.breeze) AND
-    thunder.no AND fog.no => score.good;
+    thunder.no AND fog.no => good;
 ```
 The weather class is outputted using built-in function Classify():
 ```c
-print int2string(Classify(score));
+print int2string(Classify(this));
 ```
 
 In notebook_fuzzy.py, the input data is given to the fuzzy program as its command line argument, using the -r option:
