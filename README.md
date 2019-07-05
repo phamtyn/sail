@@ -130,6 +130,31 @@ Overview diagram of the Sail solution is as follows:
 
 ![Overview](sail-overview.png)
 
+## NEW! An option using genetic algorithms to train, optimize hyperparameters and select neural network models
+
+[FPP project](https://omarine.org/football-predictions/) is used as option 2 instead of Watson Machine Learning. The Genetic algorithms are used not only to select models but also to train neural networks. Traditional learning methods of neural networks are still maintained but only applied at a rate of 10%, and serve as a genetic mutation. This whole solution is performed on a notebook with the source code in notebook_fpp.py file. Training and testing data of the neural networks is the file fppdata.txt. When the program *fpp* is run, the trained model with the weight file weights.txt will output the result:
+
+```python
+check_weather2update()
+weather = get_7day_weather()
+
+inputs = [ 
+            'Panama', 'General Cargo', str(12000),  str(2011), 'Philippines', 'Rice in bags', 'Indonesia Sea', 'Summer', weather,   str(8),    'Normal', 'Normal'
+]
+
+arg = ",".join(inputs)
+
+try:
+    out = run(["./fpp", "-r", arg], stdout=PIPE, stderr=STDOUT, check=True)
+    print(out.stdout.decode())
+    
+except CalledProcessError as error:
+    print (error.stdout.decode())
+```
+The diagram of this option is as follows:
+
+![FPP](sail-fpp.png)
+
 ## Valid input values
 
 When predicting, the input values ​​must be entered. Below is lists of valid input values ​​corresponding to each column in the sample data table
