@@ -261,3 +261,21 @@ The result will be one of five classes:
 "High Risk"
 "Dangerous"
 ```
+
+## See Also
+[Is it possible to do defuzzication a discrete fuzzy set?](https://omarine.org/blog/is-it-possible-to-do-defuzzication-a-discrete-fuzzy-set/)
+
+[Can Fuzzy learn or just deduce?](https://omarine.org/blog/can-fuzzy-learn-or-just-deduce/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: batch and mini-batch](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-batch-and-mini-batch/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Need the test set?](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-need-the-test-set/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Local minima](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-local-minima/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: High quality classification](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-high-quality-classification/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Data mining with Convolution](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-data-mining-with-convolution/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Data mining with id3](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-data-mining-with-id3/)
+
