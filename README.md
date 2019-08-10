@@ -279,3 +279,12 @@ The result will be one of five classes:
 
 [Neural network: Using genetic algorithms to train and deploy neural networks: Data mining with id3](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-data-mining-with-id3/)
 
+[Neural network: Using genetic algorithms to train and deploy neural networks: The derivatives of the transfer functions](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-the-derivatives-of-the-transfer-functions/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: The probability distributions](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-the-probability-distributions/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Selecting the class](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-selecting-the-class/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Embedding](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-embedding/)
+
+
