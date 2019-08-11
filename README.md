@@ -287,4 +287,4 @@ The result will be one of five classes:
 
 [Neural network: Using genetic algorithms to train and deploy neural networks: Embedding](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-embedding/)
 
-
+[Neural network: Using genetic algorithms to train and deploy neural networks: Multithreading](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-multithreading/)
