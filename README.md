@@ -290,3 +290,8 @@ The result will be one of five classes:
 [Neural network: Using genetic algorithms to train and deploy neural networks: Multithreading](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-multithreading/)
 
 [Neural network: Using genetic algorithms to train and deploy neural networks: Auto AI - Automatically determine the number of training steps according to the contraction mapping principle](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-auto-ai-automatically-determine-the-number-of-training-steps-according-to-the-contraction-mapping-principle/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Contraction mapping - Lipschitz constant setting](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-contraction-mapping-lipschitz-constant-setting/)
+
+[Neural network: Using genetic algorithms to train and deploy neural networks: Experiment - Compare FPP with TensorFlow](https://omarine.org/blog/neural-network-using-genetic-algorithms-to-train-and-deploy-neural-networks-experiment-compare-fpp-with-tensorflow/)
+
